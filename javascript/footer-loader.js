@@ -1,6 +1,6 @@
 // Used to load footer on the bottom of each page
 document.addEventListener('DOMContentLoaded', function() {
-    fetch('../footer.html')
+    fetch('../html/footer.html')
       .then(response => response.text())
       .then(data => {
         document.body.insertAdjacentHTML('beforeend', data);
