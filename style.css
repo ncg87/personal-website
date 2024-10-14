@@ -44,3 +44,20 @@ footer {
     bottom: 0;
     width: 100%;
 }
+.social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.icon-link {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+}
