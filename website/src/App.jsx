@@ -5,38 +5,7 @@ import Footer from './components/Footer';
 import HomePage from './components/HomePage';
 import AboutMe from './components/AboutMe';
 import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-
-const PlaceholderPage = ({ title }) => (
-    <Box
-        sx={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            minHeight: 'calc(100vh - 64px)', // Ensure it fills the screen minus the header and footer height
-            padding: '20px',
-            color: 'white',
-            textAlign: 'center',
-            position: 'relative',
-            backgroundColor: 'rgba(0, 0, 0, 0.5)', // Optional overlay
-        }}
-    >
-        {/* Placeholder Content */}
-        <Typography
-            variant="h1"
-            sx={{
-                fontSize: 'clamp(2rem, 5vw, 4rem)', // Responsive font size
-                fontWeight: 'bold',
-                zIndex: 1, // Ensures the text appears above the background
-            }}
-        >
-            {title} Page Coming Soon
-        </Typography>
-    </Box>
-);
-
-
-
+import PlaceholderPage from './components/PlaceHolder';
 
 const App = () => {
     return (
@@ -46,8 +15,8 @@ const App = () => {
                 sx={{
                     backgroundColor: 'rgba(0, 80, 48, 0.3)', // Background overlay color
                     position: 'relative',
-                    minHeight: '100%', // Ensures the app spans the entire viewport
-                    width: '100%',
+                    minHeight: '100vh', // Ensures the app spans the entire viewport
+                    width: '100vw',
                     overflow: 'hidden', // Prevent content overflow
                 }}
             >
