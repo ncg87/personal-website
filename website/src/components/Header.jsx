@@ -27,12 +27,18 @@ const Header = () => {
                     backgroundColor: 'rgba(0, 80, 48, 0.9)', // University of Miami green with transparency
                 }}
             >
-                <Toolbar>
+                <Toolbar
+                    sx={{
+                        flexWrap: 'wrap', // Allow wrapping of content
+                        minHeight: { xs: '56px', sm: '64px' }, // Smaller height for mobile devices
+                        padding: '0 10px', // Adjust padding for smaller screens
+                    }}
+                >
                     {/* Main Title */}
                     <Typography
                         sx={{
                             flexGrow: 1,
-                            fontSize: 'clamp(1.5rem, 4vw, 2.5rem)', // Dynamically scales between 1.5rem and 2.5rem
+                            fontSize: { xs: '1.2rem', sm: 'clamp(1.5rem, 4vw, 2.5rem)' }, // Smaller font size for mobile
                             fontWeight: 'bold', // Bold for emphasis
                         }}
                     >
@@ -44,6 +50,7 @@ const Header = () => {
                         sx={{
                             display: 'flex',
                             gap: '10px', // Increased spacing between buttons
+                            flexWrap: 'wrap', // Allow buttons to wrap on smaller screens
                         }}
                     >
                         <Button
@@ -51,7 +58,7 @@ const Header = () => {
                             sx={{
                                 alignItems: 'center',
                                 textAlign: 'center',
-                                fontSize: 'clamp(0.8rem, 2vw, 1rem)', // Dynamically scales between 0.8rem and 1rem
+                                fontSize: { xs: '0.7rem', sm: 'clamp(0.8rem, 2vw, 1rem)' }, // Smaller font size for mobile
                             }}
                             href="/"
                         >
@@ -62,7 +69,7 @@ const Header = () => {
                             sx={{
                                 alignItems: 'center',
                                 textAlign: 'center',
-                                fontSize: 'clamp(0.8rem, 2vw, 1rem)',
+                                fontSize: { xs: '0.7rem', sm: 'clamp(0.8rem, 2vw, 1rem)' },
                             }}
                             href="/about"
                         >
@@ -73,7 +80,7 @@ const Header = () => {
                             sx={{
                                 alignItems: 'center',
                                 textAlign: 'center',
-                                fontSize: 'clamp(0.8rem, 2vw, 1rem)',
+                                fontSize: { xs: '0.7rem', sm: 'clamp(0.8rem, 2vw, 1rem)' },
                             }}
                             href="/projects"
                         >
@@ -84,7 +91,7 @@ const Header = () => {
                             sx={{
                                 alignItems: 'center',
                                 textAlign: 'center',
-                                fontSize: 'clamp(0.8rem, 2vw, 1rem)',
+                                fontSize: { xs: '0.7rem', sm: 'clamp(0.8rem, 2vw, 1rem)' },
                             }}
                             href="/posts"
                         >
@@ -98,11 +105,11 @@ const Header = () => {
                             sx={{
                                 alignItems: 'center',
                                 textAlign: 'center',
-                                fontSize: 'clamp(0.8rem, 2vw, 1rem)',
+                                fontSize: { xs: '0.7rem', sm: 'clamp(0.8rem, 2vw, 1rem)' },
                                 backgroundColor: '#FF5722', // Orange background
                                 borderRadius: '20px', // Rounded corners
                                 color: 'white', // White text color
-                                padding: '5px 15px', // Extra padding for better appearance
+                                padding: { xs: '5px 10px', sm: '5px 15px' }, // Adjust padding for smaller screens
                                 '&:hover': {
                                     backgroundColor: '#E64A19', // Darker orange on hover
                                 },
@@ -129,7 +136,7 @@ const Header = () => {
                                     window.location.href = 'mailto:ncg87@miami.edu';
                                 }}
                                 sx={{
-                                    fontSize: 'clamp(0.8rem, 1.5vw, 1rem)', // Responsive font size
+                                    fontSize: { xs: '0.7rem', sm: 'clamp(0.8rem, 1.5vw, 1rem)' }, // Responsive font size
                                 }}
                             >
                                 Email
@@ -140,7 +147,7 @@ const Header = () => {
                                     window.open('/resume.pdf', '_blank');
                                 }}
                                 sx={{
-                                    fontSize: 'clamp(0.8rem, 1.5vw, 1rem)', // Responsive font size
+                                    fontSize: { xs: '0.7rem', sm: 'clamp(0.8rem, 1.5vw, 1rem)' }, // Responsive font size
                                 }}
                             >
                                 Resume
