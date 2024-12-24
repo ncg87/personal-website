@@ -11,7 +11,7 @@ const Footer = () => {
             component="footer"
             sx={{
                 width: '100vw', // Full width of the viewport
-                 backgroundColor: 'rgba(244, 115, 33, 0.8)',
+                 backgroundColor: 'rgba(244, 115, 33, 0.9)',
                 color: '#fff',
                 textAlign: 'center',
                 padding: '20px 0',

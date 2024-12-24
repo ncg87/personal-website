@@ -11,7 +11,7 @@ const Header = () => {
             <AppBar
                 position="static"
                 sx={{
-                    backgroundColor: 'rgba(0, 80, 48, 0.8)', // University of Miami green with transparency
+                    backgroundColor: 'rgba(0, 80, 48, 0.9)', // University of Miami green with transparency
                 }}
             >
                 <Toolbar>
@@ -30,13 +30,16 @@ const Header = () => {
                     <Box
                         sx={{
                             display: 'flex',
-                            gap: '10px', // Space between buttons
+                            gap: '5px', // Space between buttons
                         }}
                     >
                         <Button
                             color="inherit"
+                            
                             sx={{
-                                fontSize: 'clamp(0.8rem, 2vw, 1rem)', // Dynamically scales between 0.8rem and 1rem
+                                alignItems: 'center',
+                                textAlign: 'center',
+                                fontSize: 'clamp(0.5rem, 2vw, 1rem)', // Dynamically scales between 0.8rem and 1rem
                             }}
                             href="/"
                         >
@@ -44,8 +47,11 @@ const Header = () => {
                         </Button>
                         <Button
                             color="inherit"
+                            
                             sx={{
-                                fontSize: 'clamp(0.8rem, 2vw, 1rem)', // Dynamically scales between 0.8rem and 1rem
+                                alignItems: 'center',
+                                textAlign: 'center',
+                                fontSize: 'clamp(0.5rem, 2vw, 1rem)', // Dynamically scales between 0.8rem and 1rem
                             }}
                             href="/about"
                         >
@@ -54,11 +60,35 @@ const Header = () => {
                         <Button
                             color="inherit"
                             sx={{
-                                fontSize: 'clamp(0.8rem, 2vw, 1rem)', // Dynamically scales between 0.8rem and 1rem
+                                alignItems: 'center',
+                                textAlign: 'center',
+                                fontSize: 'clamp(0.5rem, 2vw, 1rem)', // Dynamically scales between 0.8rem and 1rem
+                            }}
+                            href="/posts"
+                        >
+                            Posts
+                        </Button>
+                        <Button
+                            color="inherit"
+                            sx={{
+                                alignItems: 'center',
+                                textAlign: 'center',
+                                fontSize: 'clamp(0.5rem, 2vw, 1rem)', // Dynamically scales between 0.8rem and 1rem
                             }}
                             href="/projects"
                         >
                             Projects
+                        </Button>
+                        <Button
+                            color="inherit"
+                            sx={{
+                                alignItems: 'center',
+                                textAlign: 'center',
+                                fontSize: 'clamp(0.5rem, 2vw, 1rem)', // Dynamically scales between 0.8rem and 1rem
+                            }}
+                            href="/contact"
+                        >
+                            Contact
                         </Button>
                     </Box>
                 </Toolbar>
