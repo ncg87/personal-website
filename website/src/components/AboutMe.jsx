@@ -1,38 +1,44 @@
 import React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import Paper from '@mui/material/Paper';
 
 const AboutMe = () => {
     return (
         <Box
             id="about"
             sx={{
+                position: 'relative', // Matches the positioning from HomePage
+                minHeight: 'calc(100vh - 64px)', // Adjusts for Header and Footer height
+                width: '100%',
+                overflow: 'hidden', // Prevents content overflow
                 display: 'flex',
-                justifyContent: 'center',
+                flexDirection: { xs: 'column', md: 'row' }, // Stacks content on small screens
                 alignItems: 'center',
-                minHeight: '70vh', // Ensures it spans most of the page
-                padding: 3,
-                backgroundColor: '#1e1e1e', // Matches your site's theme
+                justifyContent: 'space-between',
+                textAlign: 'left',
+                padding: { xs: '20px', md: '50px' }, // Responsive padding
+                color: 'white',
+                backgroundColor: 'rgba(30, 30, 30, 0.9)', // Semi-transparent dark background
             }}
         >
-            <Paper
-                elevation={3}
+            {/* Text Section */}
+            <Box
                 sx={{
-                    padding: 4,
-                    maxWidth: '800px',
-                    backgroundColor: '#2c3e50',
-                    color: '#ecf0f1',
-                    borderRadius: '8px',
+                    flex: 2,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    maxWidth: { xs: '100%', md: '60%' }, // Responsive width
+                    padding: { xs: '10px', md: '20px' }, // Responsive padding
                 }}
             >
                 <Typography
                     variant="h4"
                     component="h2"
                     sx={{
-                        marginBottom: 2,
-                        color: '#1abc9c', // Highlighted heading color
-                        textAlign: 'center',
+                        fontSize: { xs: '1.8rem', md: 'clamp(2rem, 5vw, 3rem)' }, // Responsive font size
+                        marginBottom: '20px',
+                        color: '#1abc9c', // Accent color for heading
                     }}
                 >
                     About Me
@@ -40,8 +46,10 @@ const AboutMe = () => {
                 <Typography
                     variant="body1"
                     sx={{
-                        lineHeight: 1.6,
+                        fontSize: { xs: '1rem', md: 'clamp(1rem, 2.5vw, 1.5rem)' }, // Responsive font size
+                        lineHeight: 1.8,
                         textAlign: 'justify',
+                        marginBottom: '20px',
                     }}
                 >
                     I'm a passionate and driven student at the University of Miami,
@@ -53,7 +61,7 @@ const AboutMe = () => {
                     from advanced machine learning applications to quantitative
                     analysis and mobile app development.
                 </Typography>
-            </Paper>
+            </Box>
         </Box>
     );
 };
