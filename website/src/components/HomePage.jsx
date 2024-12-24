@@ -50,9 +50,33 @@ const HomePage = () => {
                         justifyContent: 'center',
                     }}
                 >
-                    <h1>Nickolas Goodis</h1>
-                    <h2>Junior at University of Miami studying CS, Math, and AI</h2>
-                    <h4>I am a software engineer and data scientist with a passion for exploring different technologies and creating innovative solutions to complex problems.</h4>
+                    <h1
+                        style={{
+                            fontSize: 'clamp(2rem, 5vw, 4rem)', // Dynamically adjusts between 2rem and 4rem
+                            margin: '0',
+                        }}
+                    >
+                        Nickolas Goodis
+                    </h1>
+                    <h2
+                        style={{
+                            fontSize: 'clamp(1.5rem, 4vw, 2.5rem)', // Dynamically adjusts between 1.5rem and 2.5rem
+                            margin: '10px 0',
+                        }}
+                    >
+                        Junior at University of Miami studying CS, Math, and AI
+                    </h2>
+                    <h4
+                        style={{
+                            fontSize: 'clamp(1rem, 3vw, 1.5rem)', // Dynamically adjusts between 1rem and 1.5rem
+                            lineHeight: '1.8',
+                            margin: '10px 0',
+                        }}
+                    >
+                        I am a software engineer and data scientist with a passion for exploring
+                        different technologies and creating innovative solutions to complex
+                        problems.
+                    </h4>
                 </Box>
 
                 {/* Circular Image */}

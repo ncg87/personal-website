@@ -11,16 +11,56 @@ const Header = () => {
             <AppBar
                 position="static"
                 sx={{
-                    backgroundColor: 'rgba(244, 115, 33, 0.8)', // Orange color with slight transparency
+                    backgroundColor: 'rgba(0, 80, 48, 0.8)', // University of Miami green with transparency
                 }}
             >
                 <Toolbar>
-                    <Typography variant="h6" sx={{ flexGrow: 1 }}>
+                    {/* Main Title */}
+                    <Typography
+                        sx={{
+                            flexGrow: 1,
+                            fontSize: 'clamp(1.5rem, 4vw, 2.5rem)', // Dynamically scales between 1.5rem and 2.5rem
+                            fontWeight: 'bold', // Make it bold for emphasis
+                        }}
+                    >
                         Nickolas (Nicko) Goodis
                     </Typography>
-                    <Button color="inherit" href="/">Home</Button>
-                    <Button color="inherit" href="/about">About Me</Button>
-                    <Button color="inherit" href="/projects">Projects</Button>
+
+                    {/* Navigation Buttons */}
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            gap: '10px', // Space between buttons
+                        }}
+                    >
+                        <Button
+                            color="inherit"
+                            sx={{
+                                fontSize: 'clamp(0.8rem, 2vw, 1rem)', // Dynamically scales between 0.8rem and 1rem
+                            }}
+                            href="/"
+                        >
+                            Home
+                        </Button>
+                        <Button
+                            color="inherit"
+                            sx={{
+                                fontSize: 'clamp(0.8rem, 2vw, 1rem)', // Dynamically scales between 0.8rem and 1rem
+                            }}
+                            href="/about"
+                        >
+                            About Me
+                        </Button>
+                        <Button
+                            color="inherit"
+                            sx={{
+                                fontSize: 'clamp(0.8rem, 2vw, 1rem)', // Dynamically scales between 0.8rem and 1rem
+                            }}
+                            href="/projects"
+                        >
+                            Projects
+                        </Button>
+                    </Box>
                 </Toolbar>
             </AppBar>
         </>
