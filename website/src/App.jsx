@@ -56,7 +56,6 @@ const App = () => {
                             <Route path="/" element={<HomePage />} />
                             <Route path="/about" element={<AboutMe />} />
                             <Route path="/posts" element={<PlaceholderPage title="Posts" />} />
-                            <Route path="/contact" element={<PlaceholderPage title="Contact" />} />
                             <Route path="/projects" element={<PlaceholderPage title="Projects" />} />
                             {/* Fallback for undefined routes */}
                             <Route path="*" element={<PlaceholderPage title="404 Not Found" />} />
