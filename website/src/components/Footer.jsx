@@ -10,8 +10,8 @@ const Footer = () => {
         <Box
             component="footer"
             sx={{
-                width: '100vw', // Full width of the viewport
-                 backgroundColor: 'rgba(244, 115, 33, 0.9)',
+                width: '100%', // Full width of the screen, handles mobile better than 100vw
+                backgroundColor: 'rgba(244, 115, 33, 0.9)', // Footer background color
                 color: '#fff',
                 textAlign: 'center',
                 padding: '20px 0',
@@ -19,6 +19,7 @@ const Footer = () => {
                 flexDirection: 'column',
                 alignItems: 'center',
                 gap: 1,
+                boxSizing: 'border-box', // Ensures padding is included in width calculation
             }}
         >
             {/* Social Icons */}
