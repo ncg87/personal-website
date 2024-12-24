@@ -32,18 +32,49 @@ const HomePage = () => {
             <Box
                 sx={{
                     display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'left',
-                    justifyContent: 'center',
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
                     textAlign: 'left',
                     color: 'white',
-                    padding: '100px 20px', // Adjust for spacing
+                    padding: '50px 20px', // Adjust for spacing
                     zIndex: 1, // Ensure content stays above the background
                 }}
             >
-                <h1>Nickolas Goodis</h1>
-                <h2>Junior at University of Miami studying CS, Math, and AI</h2>
-                <h4>I am a software engineer and data scientist with a passion for creating innovative solutions to complex problems.</h4>
+                {/* Text Content */}
+                <Box
+                    sx={{
+                        flex: 2, // Allocate more space for text
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                    }}
+                >
+                    <h1>Nickolas Goodis</h1>
+                    <h2>Junior at University of Miami studying CS, Math, and AI</h2>
+                    <h4>I am a software engineer and data scientist with a passion for exploring different technologies and creating innovative solutions to complex problems.</h4>
+                </Box>
+
+                {/* Circular Image */}
+                <Box
+                    sx={{
+                        flex: 1, // Allocate space for the image
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                    }}
+                >
+                    <img
+                        src="/me.jpg"
+                        alt="Nickolas Goodis"
+                        style={{
+                            width: '60%', // Dynamically adjust the size relative to its container
+                            height: 'auto', // Maintain aspect ratio
+                            borderRadius: '50%', // Make the image circular
+                            border: '4px solid white', // Optional border styling
+                        }}
+                    />
+                </Box>
             </Box>
         </Box>
     );
