@@ -24,7 +24,6 @@ const AboutMe = () => {
             {/* Text Section */}
             <Box
                 sx={{
-                    flex: 2,
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'center',

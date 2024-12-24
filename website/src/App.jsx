@@ -6,6 +6,7 @@ import HomePage from './components/HomePage';
 import AboutMe from './components/AboutMe';
 import Box from '@mui/material/Box';
 import PlaceholderPage from './components/PlaceHolder';
+import ProjectsPage from './components/ProjectsPage';
 
 const App = () => {
     return (
@@ -56,7 +57,8 @@ const App = () => {
                             <Route path="/" element={<HomePage />} />
                             <Route path="/about" element={<AboutMe />} />
                             <Route path="/posts" element={<PlaceholderPage title="Posts" />} />
-                            <Route path="/projects" element={<PlaceholderPage title="Projects" />} />
+                            <Route path="/projects" element={<ProjectsPage />} />
+                            <Route path="/posts/:postId" element={<PlaceholderPage title="" />} />
                             {/* Fallback for undefined routes */}
                             <Route path="*" element={<PlaceholderPage title="404 Not Found" />} />
                         </Routes>
