@@ -9,6 +9,21 @@ import { Link } from 'react-router-dom';
 
 const projects = [
     {
+        title: "CryptoFlows.ai",
+        description:
+            "Frontend to display results of the DEX tracker that I built.",
+        github: "https://github.com/ncg87/cryptoflows",
+        website: "https://cryptoflows.ai",
+        postLink: "/posts/cryptoflows-ai",
+    },
+    {
+        title: "DEX Tracker",
+        description:
+            "Built a DEX tracker that every transaction down to the grainular level an stores it in a database.",
+        github: "https://github.com/ncg87/dex_tracker_system",
+        postLink: "/posts/dex-tracker",
+    },
+    {
         title: "Donation Blockchain Portal",
         description:
             "Built a decentralized app for secure ETH transactions and donor tier tracking using Solidity and React.",
@@ -74,6 +89,7 @@ const projects = [
         github: "https://github.com/ncg87/tic-tac-toe",
         postLink: "/posts/python-tic-tac-toe-game",
     }
+
 ];
 
 const ProjectsPage = () => {
