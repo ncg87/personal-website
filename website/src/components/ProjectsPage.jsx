@@ -11,15 +11,22 @@ const projects = [
     {
         title: "CryptoFlows.ai",
         description:
-            "Frontend to display results of the DEX tracker that I built.",
+            "Current work in progress, working on the backend, track every individual transaction that goes through a blochain network.",
         github: "https://github.com/ncg87/cryptoflows",
         website: "https://cryptoflows.ai",
         postLink: "/posts/cryptoflows-ai",
     },
     {
+        title: "Bitcoin Transaction Network Visualization",
+        description:
+            "Allows users to explore the relationships between Bitcoin transactions, addresses, and outputs in an intuitive three-dimensional space. Built on top of my CryptoFlows.ai backend.",
+        github: "https://github.com/ncg87/bitcoin-transaction-network",
+        postLink: "/posts/bitcoin-transaction-network-visualization",
+    },
+    {
         title: "DEX Tracker",
         description:
-            "Built a DEX tracker that every transaction down to the grainular level an stores it in a database.",
+            "Built a DEX tracker that every transaction on a couple of different DEXs down to the grainular level an stores it in a database.",
         github: "https://github.com/ncg87/dex_tracker_system",
         postLink: "/posts/dex-tracker",
     },
