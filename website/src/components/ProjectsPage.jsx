@@ -20,7 +20,8 @@ const projects = [
         title: "Bitcoin Transaction Network Visualization",
         description:
             "Allows users to explore the relationships between Bitcoin transactions, addresses, and outputs in an intuitive three-dimensional space. Built on top of my CryptoFlows.ai backend.",
-        github: "https://github.com/ncg87/bitcoin-transaction-network",
+        github: "https://github.com/ncg87/bitcoin-tx-graph",
+        website: "https://bitcoin-tx-graph.vercel.app/",
         postLink: "/posts/bitcoin-transaction-network-visualization",
     },
     {
