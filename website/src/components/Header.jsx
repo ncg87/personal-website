@@ -93,6 +93,17 @@ const Header = () => {
                                 textAlign: 'center',
                                 fontSize: { xs: '0.7rem', sm: 'clamp(0.8rem, 2vw, 1rem)' },
                             }}
+                            href="/resume"
+                        >
+                            Resume
+                        </Button>
+                        <Button
+                            color="inherit"
+                            sx={{
+                                alignItems: 'center',
+                                textAlign: 'center',
+                                fontSize: { xs: '0.7rem', sm: 'clamp(0.8rem, 2vw, 1rem)' },
+                            }}
                             href="/posts"
                         >
                             Posts
@@ -144,7 +155,7 @@ const Header = () => {
                             <MenuItem
                                 onClick={() => {
                                     handleMenuClose();
-                                    window.open('/resume.pdf', '_blank');
+                                    window.location.href = '/resume';
                                 }}
                                 sx={{
                                     fontSize: { xs: '0.7rem', sm: 'clamp(0.8rem, 1.5vw, 1rem)' }, // Responsive font size

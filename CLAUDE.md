@@ -4,14 +4,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Structure
 
-This is a personal portfolio website built with React and Vite. The main application code is located in the `website/` directory, which contains a complete React application.
+This is a modern personal portfolio website built with React, Vite, and Tailwind CSS. The main application code is located in the `website/` directory, which contains a complete React application following modern best practices.
 
 **Key directories:**
 - `website/` - Main React application
-- `website/src/components/` - React components (Header, Footer, HomePage, AboutMe, ProjectsPage, etc.)
-- `website/src/components/posts/` - Blog post components
-- `website/src/components/projects/` - Project-specific components
-- `website/public/` - Static assets
+- `website/src/components/` - React components (ModernHeader, Footer, HomePage, AboutMe, Resume, etc.)
+- `website/src/components/ui/` - Reusable UI components (Button, Card, Badge, SkipLink, etc.)
+- `website/src/hooks/` - Custom React hooks (useReducedMotion)
+- `website/public/` - Static assets including resume.pdf
 
 ## Development Commands
 
@@ -23,59 +23,90 @@ cd website
 
 **Development server:**
 ```bash
-npm run dev
-# or
 pnpm dev
 ```
 
 **Build for production:**
 ```bash
-npm run build
-# or
 pnpm build
 ```
 
 **Lint code:**
 ```bash
-npm run lint
-# or
 pnpm lint
 ```
 
 **Preview production build:**
 ```bash
-npm run preview
-# or
 pnpm preview
 ```
 
-## Architecture
+## Modern Architecture
 
 **Frontend Framework:** React 18 with Vite as the build tool
-**UI Library:** Material-UI (MUI) v6 for components and styling
+**Styling:** Tailwind CSS v3 with custom Miami-themed design tokens
+**Animations:** Framer Motion for microinteractions and page transitions
+**Icons:** Lucide React for consistent iconography
+**SEO:** React Helmet Async for meta tag management
 **Routing:** React Router DOM v7 for client-side navigation
-**Styling:** Combination of Material-UI theme system and CSS
 
-**Main Application Structure:**
-- `App.jsx` - Main application component with routing and layout
-- Background image overlay system with fixed background
-- Responsive layout with Header/Main/Footer structure
-- Route-based navigation for Home, About, Projects, and Posts pages
+**Design System:**
+- Miami University color palette (greens and oranges)
+- Consistent spacing and typography scales
+- Accessible focus states and skip links
+- Dark mode support with proper contrast ratios
+- Responsive design with mobile-first approach
 
 **Key Components:**
-- `Header.jsx` - Navigation component
-- `Footer.jsx` - Footer component  
-- `HomePage.jsx` - Landing page
-- `AboutMe.jsx` - About page
-- `ProjectsPage.jsx` - Portfolio projects showcase
-- `PlaceHolder.jsx` - Generic placeholder for unfinished pages
+- `ModernHeader.jsx` - Responsive navigation with mobile menu
+- `Resume.jsx` - ATS-friendly HTML resume with PDF download tracking
+- `ModernProjectsPage.jsx` - Enhanced projects showcase with animations
+- `SEO.jsx` - Meta tags and structured data management
+- `ui/` components - Reusable design system components
 
-The application uses Material-UI's Box component extensively for layout and styling, with a green-tinted background overlay over a campus background image.
+**Performance Features:**
+- Optimized images with loading states
+- Code splitting and lazy loading
+- CSS purging with Tailwind
+- Proper meta tags for SEO
+- Analytics event tracking for resume downloads
 
 ## Package Management
 
-This project uses `pnpm` as the package manager (evidenced by `pnpm-lock.yaml`). The main `package.json` in the root has minimal scripts, while the actual application dependencies and scripts are in `website/package.json`.
+This project uses `pnpm` as the package manager. Key dependencies include:
+- React 18 with modern hooks
+- Tailwind CSS for styling
+- Framer Motion for animations
+- Lucide React for icons
+- React Helmet Async for SEO
+
+## Development Notes
+
+**Configuration Files:**
+- `tailwind.config.cjs` - Tailwind CSS configuration with Miami theme
+- `postcss.config.cjs` - PostCSS configuration
+- Files use `.cjs` extension due to ES modules in package.json
+
+**Accessibility:**
+- Skip links for keyboard navigation
+- Proper semantic HTML structure
+- ARIA labels and screen reader support
+- Focus management and reduced motion support
+
+**SEO Features:**
+- Structured data with schema.org Person markup
+- Open Graph and Twitter Card meta tags
+- Canonical URLs and proper page titles
+- Optimized descriptions for each page
+
+## Resume Integration
+
+The site includes a comprehensive resume page (`/resume`) that:
+- Displays HTML version of resume for ATS compatibility
+- Includes PDF download with analytics tracking
+- Features proper print styles for physical printing
+- Contains structured data for search engines
 
 ## Deployment
 
-The project includes `vercel.json` configuration for Vercel deployment.
+The project includes `vercel.json` configuration for Vercel deployment with proper routing for SPA.

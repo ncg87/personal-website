@@ -1,16 +1,21 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Header from './components/Header';
+import ModernHeader from './components/ModernHeader';
 import Footer from './components/Footer';
 import HomePage from './components/HomePage';
-import AboutMe from './components/AboutMe';
+import ModernAboutPage from './components/ModernAboutPage';
+import Resume from './components/Resume';
+import ContactForm from './components/ContactForm';
 import Box from '@mui/material/Box';
 import PlaceholderPage from './components/PlaceHolder';
-import ProjectsPage from './components/ProjectsPage';
+import ModernProjectsPage from './components/ModernProjectsPage';
+import ProjectCaseStudy from './components/ProjectCaseStudy';
+import SkipLink from './components/ui/SkipLink';
 
 const App = () => {
     return (
         <Router>
+            <SkipLink />
             {/* App Container */}
             <Box
                 sx={{
@@ -46,18 +51,22 @@ const App = () => {
                         minHeight: '100vh', // Ensures the wrapper spans the viewport height
                     }}
                 >
-                    <Header />
+                    <ModernHeader />
                     <Box
                         component="main"
+                        id="main-content"
                         sx={{
                             flex: 1, // Makes the main content stretch between the header and footer
                         }}
                     >
                         <Routes>
                             <Route path="/" element={<HomePage />} />
-                            <Route path="/about" element={<AboutMe />} />
+                            <Route path="/about" element={<ModernAboutPage />} />
+                            <Route path="/resume" element={<Resume />} />
+                            <Route path="/contact" element={<ContactForm />} />
                             <Route path="/posts" element={<PlaceholderPage title="Posts" />} />
-                            <Route path="/projects" element={<ProjectsPage />} />
+                            <Route path="/projects" element={<ModernProjectsPage />} />
+                            <Route path="/projects/:slug" element={<ProjectCaseStudy />} />
                             <Route path="/posts/:postId" element={<PlaceholderPage title="" />} />
                             {/* Fallback for undefined routes */}
                             <Route path="*" element={<PlaceholderPage title="404 Not Found" />} />

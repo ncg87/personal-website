@@ -1,9 +1,18 @@
 import React from 'react';
 import Box from '@mui/material/Box';
+import SEO from './SEO';
 
 const HomePage = () => {
     return (
-        <Box
+        <>
+            <SEO 
+                title="Nickolas Goodis - Software Engineer & Data Scientist"
+                description="Software engineer and data scientist from University of Miami. Specializing in React, TypeScript, Python, machine learning, and blockchain development."
+                keywords="software engineer, data scientist, React, TypeScript, Python, machine learning, blockchain, University of Miami, portfolio"
+                url="https://nickogoodis.com"
+                type="website"
+            />
+            <Box
             sx={{
                 position: 'relative', // Relative positioning for layout
                 minHeight: 'calc(100vh - 64px)', // Adjust for Header and Footer height
@@ -78,6 +87,7 @@ const HomePage = () => {
                 />
             </Box>
         </Box>
+        </>
     );
 };
 
