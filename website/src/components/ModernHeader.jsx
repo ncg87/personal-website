@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Download } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Button from './ui/Button';
+import ThemeToggle from './ui/ThemeToggle';
 import useReducedMotion from '../hooks/useReducedMotion';
 
 const ModernHeader = () => {
@@ -114,11 +115,14 @@ const ModernHeader = () => {
               </motion.div>
             ))}
             
+            {/* Theme Toggle */}
+            <ThemeToggle variant="simple" className="ml-2" />
+
             {/* Resume Download Button */}
             <motion.div
               whileHover={shouldReduceMotion ? {} : { scale: 1.05 }}
               whileTap={shouldReduceMotion ? {} : { scale: 0.95 }}
-              className="ml-4"
+              className="ml-2"
             >
               <Button
                 onClick={handleDownloadResume}
@@ -207,6 +211,14 @@ const ModernHeader = () => {
                       Download Resume PDF
                     </Button>
                   </motion.div>
+                </div>
+
+                {/* Mobile Theme Toggle */}
+                <div className="pt-2 mt-2 border-t border-miami-green-500">
+                  <div className="px-3 py-2">
+                    <span className="block text-sm font-medium text-miami-green-100 mb-2">Theme</span>
+                    <ThemeToggle variant="dropdown" />
+                  </div>
                 </div>
 
                 {/* Mobile Contact Links */}

@@ -1,6 +1,7 @@
 import React, { useEffect, Suspense } from 'react';
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import { trackPageView } from './utils/analytics';
+import { ThemeProvider } from './contexts/ThemeContext';
 import ModernHeader from './components/ModernHeader';
 import Footer from './components/Footer';
 import TerminalHomePage from './components/TerminalHomePage';
@@ -97,9 +98,11 @@ const AppContent = () => {
 
 const App = () => {
     return (
-        <Router>
-            <AppContent />
-        </Router>
+        <ThemeProvider>
+            <Router>
+                <AppContent />
+            </Router>
+        </ThemeProvider>
     );
 };
 

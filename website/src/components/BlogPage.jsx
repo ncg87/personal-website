@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Calendar, Clock, ArrowRight, User, Tag } from 'lucide-react';
 import Card from './ui/Card';
 import Badge from './ui/Badge';
 import Button from './ui/Button';
+import SearchBar from './ui/SearchBar';
 import SEO from './SEO';
 import PageTransition from './ui/PageTransition';
 import AnimatedSection from './ui/AnimatedSection';
 
 const BlogPage = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedTags, setSelectedTags] = useState([]);
+
   // Sample blog posts data - in a real app, this would come from a CMS or MDX files
   const blogPosts = [
     {
@@ -50,8 +54,42 @@ const BlogPage = () => {
     }
   ];
 
-  const featuredPosts = blogPosts.filter(post => post.featured);
-  const regularPosts = blogPosts.filter(post => !post.featured);
+  // Get all unique tags for filtering
+  const allTags = useMemo(() => {
+    const tags = new Set();
+    blogPosts.forEach(post => {
+      post.tags.forEach(tag => tags.add(tag));
+    });
+    return Array.from(tags).sort();
+  }, [blogPosts]);
+
+  // Filter posts based on search and tags
+  const filteredPosts = useMemo(() => {
+    return blogPosts.filter(post => {
+      // Text search
+      const matchesSearch = searchTerm === '' || 
+        post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        post.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        post.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
+
+      // Tag filter
+      const matchesTags = selectedTags.length === 0 || 
+        selectedTags.some(tag => post.tags.includes(tag));
+
+      return matchesSearch && matchesTags;
+    });
+  }, [blogPosts, searchTerm, selectedTags]);
+
+  const featuredPosts = filteredPosts.filter(post => post.featured);
+  const regularPosts = filteredPosts.filter(post => !post.featured);
+
+  const handleSearch = (term) => {
+    setSearchTerm(term);
+  };
+
+  const handleTagFilter = (tags) => {
+    setSelectedTags(tags);
+  };
 
   return (
     <>
@@ -71,10 +109,21 @@ const BlogPage = () => {
               <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
                 Blog & Insights
               </h1>
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8">
                 Sharing thoughts and experiences on software engineering, machine learning, 
                 blockchain technology, and the latest in computer science.
               </p>
+              
+              {/* Search Bar */}
+              <div className="max-w-2xl mx-auto">
+                <SearchBar
+                  onSearch={handleSearch}
+                  onFilterChange={handleTagFilter}
+                  availableFilters={allTags}
+                  selectedFilters={selectedTags}
+                  placeholder="Search posts by title, content, or tags..."
+                />
+              </div>
             </AnimatedSection>
 
             {/* Featured Posts */}
@@ -200,8 +249,47 @@ const BlogPage = () => {
               </section>
             )}
 
+            {/* No Results State */}
+            {filteredPosts.length === 0 && (searchTerm || selectedTags.length > 0) && (
+              <AnimatedSection animation="fadeUp" className="text-center py-16">
+                <Card padding="lg" className="max-w-2xl mx-auto">
+                  <div className="text-gray-400 mb-4">
+                    <Tag className="w-16 h-16 mx-auto" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                    No posts found
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300 mb-6">
+                    {searchTerm && selectedTags.length > 0 
+                      ? `No posts match "${searchTerm}" with the selected tags.`
+                      : searchTerm 
+                      ? `No posts match "${searchTerm}".`
+                      : "No posts match the selected tags."
+                    }
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <Button
+                      variant="primary"
+                      onClick={() => {
+                        setSearchTerm('');
+                        setSelectedTags([]);
+                      }}
+                    >
+                      Clear filters
+                    </Button>
+                    <Link to="/projects">
+                      <Button variant="outline">
+                        View Projects Instead
+                      </Button>
+                    </Link>
+                  </div>
+                </Card>
+              </AnimatedSection>
+            )}
+
             {/* Coming Soon Message */}
-            <AnimatedSection animation="fadeUp" className="text-center mt-16">
+            {filteredPosts.length > 0 && (
+              <AnimatedSection animation="fadeUp" className="text-center mt-16">
               <Card padding="lg" className="max-w-2xl mx-auto">
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
                   More Content Coming Soon
@@ -223,7 +311,8 @@ const BlogPage = () => {
                   </Link>
                 </div>
               </Card>
-            </AnimatedSection>
+              </AnimatedSection>
+            )}
 
           </div>
         </div>
