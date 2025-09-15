@@ -71,26 +71,53 @@ const ContactForm = () => {
     
     try {
       // Track form submission
-      if (window.gtag) {
-        window.gtag('event', 'contact_form_submit', {
-          event_category: 'engagement',
-          event_label: 'Contact Form'
-        });
-      }
+      import('../utils/analytics').then(({ trackContactFormSubmit }) => {
+        trackContactFormSubmit();
+      });
 
-      // Simulate form submission (replace with actual API call)
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Try to submit to backend service (Formspree, Netlify Forms, etc.)
+      const formEndpoint = import.meta.env.VITE_CONTACT_FORM_ENDPOINT;
       
-      // Create mailto link as fallback
+      if (formEndpoint && formEndpoint !== 'undefined') {
+        const response = await fetch(formEndpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            subject: formData.subject,
+            message: formData.message,
+            _replyto: formData.email
+          })
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to submit form');
+        }
+        
+        setIsSubmitted(true);
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        // Fallback to mailto if no backend configured
+        const mailtoLink = `mailto:ncg87@miami.edu?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
+          `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+        )}`;
+        
+        window.location.href = mailtoLink;
+        setIsSubmitted(true);
+      }
+      
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      // Fallback to mailto on error
       const mailtoLink = `mailto:ncg87@miami.edu?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
         `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
       )}`;
       
       window.location.href = mailtoLink;
       setIsSubmitted(true);
-      
-    } catch (error) {
-      console.error('Error submitting form:', error);
     } finally {
       setIsSubmitting(false);
     }

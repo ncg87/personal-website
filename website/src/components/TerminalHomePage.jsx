@@ -83,12 +83,10 @@ const TerminalHomePage = () => {
   };
 
   const handleDownloadResume = () => {
-    if (window.gtag) {
-      window.gtag('event', 'resume_download_hero', {
-        event_category: 'engagement',
-        event_label: 'Hero Section'
-      });
-    }
+    // Import analytics utility
+    import('../utils/analytics').then(({ trackResumeDownload }) => {
+      trackResumeDownload('Hero Section');
+    });
     
     const link = document.createElement('a');
     link.href = '/resume.pdf';

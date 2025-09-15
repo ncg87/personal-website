@@ -1,19 +1,31 @@
-import React from 'react';
+import React, { useEffect, Suspense } from 'react';
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
+import { trackPageView } from './utils/analytics';
 import ModernHeader from './components/ModernHeader';
 import Footer from './components/Footer';
 import TerminalHomePage from './components/TerminalHomePage';
-import ModernAboutPage from './components/ModernAboutPage';
-import Resume from './components/Resume';
-import ContactForm from './components/ContactForm';
 import Box from '@mui/material/Box';
-import PlaceholderPage from './components/PlaceHolder';
-import ModernProjectsPage from './components/ModernProjectsPage';
-import ProjectCaseStudy from './components/ProjectCaseStudy';
 import SkipLink from './components/ui/SkipLink';
+import { PageLoader } from './components/ui/LoadingSpinner';
+
+// Lazy load components for code splitting
+const ModernAboutPage = React.lazy(() => import('./components/ModernAboutPage'));
+const Resume = React.lazy(() => import('./components/Resume'));
+const ContactForm = React.lazy(() => import('./components/ContactForm'));
+const ModernProjectsPage = React.lazy(() => import('./components/ModernProjectsPage'));
+const ProjectCaseStudy = React.lazy(() => import('./components/ProjectCaseStudy'));
+const NotFoundPage = React.lazy(() => import('./components/NotFoundPage'));
+const BlogPage = React.lazy(() => import('./components/BlogPage'));
+const BlogPost = React.lazy(() => import('./components/BlogPost'));
+const PlaceholderPage = React.lazy(() => import('./components/PlaceHolder'));
 
 const AppContent = () => {
     const location = useLocation();
+    
+    // Track page views
+    useEffect(() => {
+        trackPageView(location.pathname, document.title);
+    }, [location]);
     
     return (
         <>
@@ -61,18 +73,20 @@ const AppContent = () => {
                             flex: 1, // Makes the main content stretch between the header and footer
                         }}
                     >
-                        <Routes location={location} key={location.pathname}>
-                            <Route path="/" element={<TerminalHomePage key="homepage" />} />
-                            <Route path="/about" element={<ModernAboutPage />} />
-                            <Route path="/resume" element={<Resume />} />
-                            <Route path="/contact" element={<ContactForm />} />
-                            <Route path="/posts" element={<PlaceholderPage title="Posts" />} />
-                            <Route path="/projects" element={<ModernProjectsPage />} />
-                            <Route path="/projects/:slug" element={<ProjectCaseStudy />} />
-                            <Route path="/posts/:postId" element={<PlaceholderPage title="" />} />
-                            {/* Fallback for undefined routes */}
-                            <Route path="*" element={<PlaceholderPage title="404 Not Found" />} />
-                        </Routes>
+                        <Suspense fallback={<PageLoader />}>
+                            <Routes location={location} key={location.pathname}>
+                                <Route path="/" element={<TerminalHomePage key="homepage" />} />
+                                <Route path="/about" element={<ModernAboutPage />} />
+                                <Route path="/resume" element={<Resume />} />
+                                <Route path="/contact" element={<ContactForm />} />
+                                <Route path="/posts" element={<BlogPage />} />
+                                <Route path="/projects" element={<ModernProjectsPage />} />
+                                <Route path="/projects/:slug" element={<ProjectCaseStudy />} />
+                                <Route path="/posts/:slug" element={<BlogPost />} />
+                                {/* Fallback for undefined routes */}
+                                <Route path="*" element={<NotFoundPage />} />
+                            </Routes>
+                        </Suspense>
                     </Box>
                     <Footer />
                 </Box>

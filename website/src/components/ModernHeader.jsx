@@ -14,6 +14,7 @@ const ModernHeader = () => {
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
     { name: 'Projects', href: '/projects' },
+    { name: 'Posts', href: '/posts' },
     { name: 'Resume', href: '/resume' },
     { name: 'Contact', href: '/contact' },
   ];
@@ -27,12 +28,9 @@ const ModernHeader = () => {
 
   const handleDownloadResume = () => {
     // Track download event
-    if (window.gtag) {
-      window.gtag('event', 'resume_download_header', {
-        event_category: 'engagement',
-        event_label: 'Header Download'
-      });
-    }
+    import('../utils/analytics').then(({ trackResumeDownload }) => {
+      trackResumeDownload('Header Download');
+    });
     
     // Download PDF
     const link = document.createElement('a');
