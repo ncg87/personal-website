@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Nickolas Goodis - Blog</title>
+    <link>https://nickogoodis.com</link>
+    <description>Technical blog posts about software engineering, machine learning, blockchain technology, and data science by Nickolas Goodis.</description>
+    <language>en-us</language>
+    <lastBuildDate><!-- Will be populated dynamically --></lastBuildDate>
+    <atom:link href="https://nickogoodis.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <webMaster>contact@nickogoodis.com (Nickolas Goodis)</webMaster>
+    <managingEditor>contact@nickogoodis.com (Nickolas Goodis)</managingEditor>
+    <copyright>Copyright 2024 Nickolas Goodis</copyright>
+    <generator>Custom RSS Generator</generator>
+    <image>
+      <url>https://nickogoodis.com/icons/icon-192x192.png</url>
+      <title>Nickolas Goodis - Blog</title>
+      <link>https://nickogoodis.com</link>
+      <width>192</width>
+      <height>192</height>
+      <description>Nickolas Goodis Portfolio Logo</description>
+    </image>
+    <!-- RSS items will be populated dynamically -->
+  </channel>
+</rss>

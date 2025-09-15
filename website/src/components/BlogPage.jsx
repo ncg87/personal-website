@@ -9,50 +9,15 @@ import SearchBar from './ui/SearchBar';
 import SEO from './SEO';
 import PageTransition from './ui/PageTransition';
 import AnimatedSection from './ui/AnimatedSection';
+import RSSSubscription from './ui/RSSSubscription';
+import { allBlogPosts } from '../data/blogPosts';
 
 const BlogPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedTags, setSelectedTags] = useState([]);
 
-  // Sample blog posts data - in a real app, this would come from a CMS or MDX files
-  const blogPosts = [
-    {
-      id: 1,
-      title: "Building a Modern Portfolio with React and Tailwind CSS",
-      excerpt: "Learn how I built this portfolio using React, Tailwind CSS, and Framer Motion with a focus on performance and accessibility.",
-      content: "Coming soon...",
-      author: "Nickolas Goodis",
-      date: "2024-01-15",
-      readTime: "8 min read",
-      tags: ["React", "Tailwind CSS", "Portfolio", "Web Development"],
-      slug: "building-modern-portfolio-react-tailwind",
-      featured: true
-    },
-    {
-      id: 2,
-      title: "Machine Learning in Financial Markets: A Data Science Approach",
-      excerpt: "Exploring how machine learning algorithms can be applied to financial market analysis and trading strategy development.",
-      content: "Coming soon...",
-      author: "Nickolas Goodis",
-      date: "2024-01-10",
-      readTime: "12 min read",
-      tags: ["Machine Learning", "Finance", "Data Science", "Python"],
-      slug: "machine-learning-financial-markets",
-      featured: true
-    },
-    {
-      id: 3,
-      title: "Blockchain Analytics: Understanding On-Chain Data",
-      excerpt: "Deep dive into blockchain analytics and how to extract meaningful insights from on-chain transaction data.",
-      content: "Coming soon...",
-      author: "Nickolas Goodis",
-      date: "2024-01-05",
-      readTime: "10 min read",
-      tags: ["Blockchain", "Analytics", "Cryptocurrency", "Data Analysis"],
-      slug: "blockchain-analytics-onchain-data",
-      featured: false
-    }
-  ];
+  // Blog posts data imported from comprehensive data file
+  const blogPosts = allBlogPosts;
 
   // Get all unique tags for filtering
   const allTags = useMemo(() => {
@@ -286,6 +251,11 @@ const BlogPage = () => {
                 </Card>
               </AnimatedSection>
             )}
+
+            {/* RSS Subscription */}
+            <AnimatedSection animation="fadeUp" className="mt-16">
+              <RSSSubscription className="max-w-4xl mx-auto" />
+            </AnimatedSection>
 
             {/* Coming Soon Message */}
             {filteredPosts.length > 0 && (
