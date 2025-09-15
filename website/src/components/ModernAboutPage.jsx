@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { MapPin, GraduationCap, Code, Brain, Award, Coffee, Music, Camera, Gamepad2 } from 'lucide-react';
 import Card from './ui/Card';
 import Badge from './ui/Badge';
@@ -7,28 +6,11 @@ import Button from './ui/Button';
 import SEO from './SEO';
 import PageTransition from './ui/PageTransition';
 import OptimizedImage from './ui/OptimizedImage';
+import AnimatedSection from './ui/AnimatedSection';
+import useReducedMotion from '../hooks/useReducedMotion';
 
 const ModernAboutPage = () => {
-  const containerVariants = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: 'easeOut'
-      }
-    }
-  };
+  const shouldReduceMotion = useReducedMotion();
 
   const skills = {
     'Programming Languages': ['Python', 'Java', 'C/C++', 'JavaScript', 'TypeScript', 'Rust', 'Solidity'],
@@ -97,15 +79,10 @@ const ModernAboutPage = () => {
         <div className="min-h-screen bg-gray-50 dark:bg-miami-neutral-900 py-12">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible"
-              className="space-y-12"
-            >
+            <div className="space-y-12">
               
               {/* Hero Section */}
-              <motion.div variants={itemVariants}>
+              <AnimatedSection animation="fadeUp">
                 <Card padding="lg" className="overflow-hidden">
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                     <div>
@@ -141,10 +118,10 @@ const ModernAboutPage = () => {
                     </div>
                   </div>
                 </Card>
-              </motion.div>
+              </AnimatedSection>
 
               {/* Education */}
-              <motion.div variants={itemVariants}>
+              <AnimatedSection animation="fadeUp">
                 <Card padding="lg">
                   <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
                     <GraduationCap className="w-8 h-8 mr-3 text-miami-green-600" />
@@ -186,10 +163,10 @@ const ModernAboutPage = () => {
                     </div>
                   </div>
                 </Card>
-              </motion.div>
+              </AnimatedSection>
 
               {/* Experience */}
-              <motion.div variants={itemVariants}>
+              <AnimatedSection animation="fadeUp">
                 <Card padding="lg">
                   <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">
                     Professional Experience
@@ -215,10 +192,10 @@ const ModernAboutPage = () => {
                     ))}
                   </div>
                 </Card>
-              </motion.div>
+              </AnimatedSection>
 
               {/* Skills */}
-              <motion.div variants={itemVariants}>
+              <AnimatedSection animation="fadeUp">
                 <Card padding="lg">
                   <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
                     <Code className="w-8 h-8 mr-3 text-miami-green-600" />
@@ -241,10 +218,10 @@ const ModernAboutPage = () => {
                     ))}
                   </div>
                 </Card>
-              </motion.div>
+              </AnimatedSection>
 
               {/* Interests & Hobbies */}
-              <motion.div variants={itemVariants}>
+              <AnimatedSection animation="fadeUp">
                 <Card padding="lg">
                   <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">
                     Beyond Code
@@ -268,10 +245,10 @@ const ModernAboutPage = () => {
                     ))}
                   </div>
                 </Card>
-              </motion.div>
+              </AnimatedSection>
 
               {/* Call to Action */}
-              <motion.div variants={itemVariants}>
+              <AnimatedSection animation="fadeUp">
                 <Card padding="lg" className="text-center bg-gradient-to-r from-miami-green-500 to-miami-green-600 text-white">
                   <h3 className="text-2xl font-bold mb-4">
                     Let's Build Something Amazing Together
@@ -297,9 +274,9 @@ const ModernAboutPage = () => {
                     </Button>
                   </div>
                 </Card>
-              </motion.div>
+              </AnimatedSection>
 
-            </motion.div>
+            </div>
           </div>
         </div>
       </PageTransition>

@@ -1,8 +1,8 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import ModernHeader from './components/ModernHeader';
 import Footer from './components/Footer';
-import HomePage from './components/HomePage';
+import TerminalHomePage from './components/TerminalHomePage';
 import ModernAboutPage from './components/ModernAboutPage';
 import Resume from './components/Resume';
 import ContactForm from './components/ContactForm';
@@ -12,9 +12,11 @@ import ModernProjectsPage from './components/ModernProjectsPage';
 import ProjectCaseStudy from './components/ProjectCaseStudy';
 import SkipLink from './components/ui/SkipLink';
 
-const App = () => {
+const AppContent = () => {
+    const location = useLocation();
+    
     return (
-        <Router>
+        <>
             <SkipLink />
             {/* App Container */}
             <Box
@@ -59,8 +61,8 @@ const App = () => {
                             flex: 1, // Makes the main content stretch between the header and footer
                         }}
                     >
-                        <Routes>
-                            <Route path="/" element={<HomePage />} />
+                        <Routes location={location} key={location.pathname}>
+                            <Route path="/" element={<TerminalHomePage key="homepage" />} />
                             <Route path="/about" element={<ModernAboutPage />} />
                             <Route path="/resume" element={<Resume />} />
                             <Route path="/contact" element={<ContactForm />} />
@@ -75,6 +77,14 @@ const App = () => {
                     <Footer />
                 </Box>
             </Box>
+        </>
+    );
+};
+
+const App = () => {
+    return (
+        <Router>
+            <AppContent />
         </Router>
     );
 };
